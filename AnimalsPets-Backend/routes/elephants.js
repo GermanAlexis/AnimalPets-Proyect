@@ -22,18 +22,18 @@ router.get('/specie/:specie',[validateJWT], specie);
 router.post('/',
   [
     check('name', 'el email es obligatorio').not().isEmail(),
-    check('sex', 'el role es obligatorio').not().isEmpty(),
-    check('species', 'el role es obligatorio').not().isEmpty(),
-    check('affiliation', 'el role es obligatorio').not().isEmpty(),
+    check('sex', 'el sexo es obligatorio').not().isEmpty(),
+    check('species', 'la especie debe ser obligatoria').not().isEmpty(),
+    check('affiliation', 'el zoo es obligatorio').not().isEmpty(),
     validateCampus,
   ],
 createElephant);
 
 router.put('/:id',  [
   check('name', 'el email es obligatorio').not().isEmail(),
-  check('sex', 'el role es obligatorio').not().isEmpty(),
-  check('species', 'el role es obligatorio').not().isEmpty(),
-  check('zoo', 'el role es obligatorio').not().isEmpty(),
+  check('sex', 'el sexo es obligatorio').not().isEmpty(),
+  check('species', 'la especie debe ser obligatoria').not().isEmpty(),
+  check('affiliation', 'el zoo es obligatorio').not().isEmpty(),
   validateCampus,
 ], updateElephant);
 
