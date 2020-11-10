@@ -25,21 +25,12 @@ const allElephants = async ( req, res ) => {
 }
 
 const createElephant = async ( req, res ) => {
-    const id = req.body.id
     
     try {
 
-        const idbd = await Elephant.findOne({ id });
-        if (idbd) {
-        return res.status(400).json({
-          ok: false,
-          msg: 'El elefante ya existe',
-        });
-        }
-
         const elephant = new Elephant(req.body)
         await elephant.save()
-
+ 
         res.status(200).json({
             ok: true,
             msg: `Exitosa respuesta`,
