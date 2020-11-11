@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-import { LoadElephant } from '../Elephat.interface';
-import { Elephant } from '../elephant.model';
+import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { element } from 'protractor';
+
+import { LoadElephant } from '../interfaces/Elephat.interface';
+import { RegisterElephant } from '../interfaces/RegisterElephant';
+import { Elephant } from '../elephant.model';
 
 const base_url = environment.base_url;
 @Injectable({
@@ -26,7 +27,7 @@ export class ElephantService {
     };
   }
 
-  login(formdata: { email; password }) {
+  login(formdata: { email: any; password: any }) {
     return this.http.post(`${base_url}/login`, formdata).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
@@ -34,6 +35,17 @@ export class ElephantService {
     );
   }
 
+  createElephant(data: RegisterElephant) {
+    console.log(data);
+    return this.http.post<RegisterElephant>(`${base_url}/elephants`, data, this.headers);
+  }
+
+  updateElephant(data: Elephant) {
+    return this.http.put<RegisterElephant>(`${base_url}/elephants/${data.uid}`, data, this.headers);
+  }
+  deleteElephant(elephant: Elephant) {
+    return this.http.delete(`${base_url}/elephants/${elephant.uid}`, this.headers);
+  }
   allElephant() {
     return this.http.get<LoadElephant>(`${base_url}/elephants`, this.headers);
   }

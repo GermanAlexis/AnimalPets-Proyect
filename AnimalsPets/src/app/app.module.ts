@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { ElephantComponent } from './pages/elephant/elephant.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './auth/login/login.component';
-import { FilterPipePipe } from './filter-pipe.pipe';
+import { EditElephantComponent } from './pages/edit-elephant/edit-elephant.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { FilterPipePipe } from './filter-pipe.pipe';
     LoginComponent,
     ElephantComponent,
     HeaderComponent,
-    FilterPipePipe,
+    EditElephantComponent,
   ],
   imports: [
     BrowserModule,

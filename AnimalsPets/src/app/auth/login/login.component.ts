@@ -26,7 +26,6 @@ export class LoginComponent {
     }
     this.auth.login(this.loginForm.value).subscribe((resp: any) => {
       Swal.fire('En Buena Hora', resp.msg, 'success');
-      console.log(resp);
       this.router.navigate(['/elephant']);
     }, (err) => {Swal.fire('Error!', err.error.msg, 'error'); });
   }
