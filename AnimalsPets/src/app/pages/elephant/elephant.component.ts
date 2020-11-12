@@ -22,7 +22,7 @@ export class ElephantComponent implements OnInit {
   show = false;
   specie: 'Asian'| 'African'| 'Unavailable'| 'African Bush Elephant'| 'Hybrid Elephant'| 'allSpecie';
   sex: 'Male'|'Female'|'all';
-
+  total: any;
   RegisterForm: FormGroup;
 
 
@@ -59,6 +59,7 @@ export class ElephantComponent implements OnInit {
       this.elephtService.allElephant().subscribe( (resp) => {
         this.elefantes = resp.elephants;
         this.loadAlert = true;
+        this.total = resp.total;
       });
   }
 
@@ -101,11 +102,13 @@ export class ElephantComponent implements OnInit {
   }
 
   updateElephant(elephant: Elephant) {
+
       this.elephtService.updateElephant(elephant).subscribe( (resp: any) => {
         Swal.fire('Elefante Editado', resp.msg, 'success');
         this.loadElephant();
         this.initForm('');
       }, (err) => {
+        console.log(err);
         const trump = this.handlerAlert(err.error.msg);
         Swal.fire('Algo Fallo!!', trump, 'error');
       }

@@ -29,7 +29,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <h4 class="card-title">Tabla de Usuario</h4>
+                        <h4 class="card-title">Tabla de Elefantes <span>{{ total}}</span></h4>
                         <h6 class="card-subtitle">Registro de Todos los Usuarios</h6>
                     </div>
 
@@ -54,8 +54,9 @@
 
                       <div class="modal-body">
                         <form [formGroup]="RegisterForm" autocomplete="off">
-                            
-                        <div class="form-group col-md-12">
+                          <input type="text" class="form-control" formControlName="uid">
+                          
+                          <div class="form-group col-md-12">
                               <label class="col-form-label">Nombre del elefante</label>
                               <input type="text" class="form-control" formControlName="name">
                         </div>  
@@ -126,7 +127,6 @@
                             <label for="message-text" class="col-form-label">Nota</label>
                             <textarea  class="form-control" formControlName="note"></textarea>
                           </div>
-                          <input type="hidden" class="form-control" formControlName="uid">
 
                         </form>
                       </div>

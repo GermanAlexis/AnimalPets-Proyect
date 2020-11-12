@@ -35,8 +35,7 @@ export class ElephantService {
     );
   }
 
-  createElephant(data: RegisterElephant) {
-    console.log(data);
+  createElephant(data: Elephant) {
     return this.http.post<RegisterElephant>(`${base_url}/elephants`, data, this.headers);
   }
 

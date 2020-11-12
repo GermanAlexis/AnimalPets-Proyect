@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ElephantComponent } from './pages/elephant/elephant.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './auth/login/login.component';
-import { EditElephantComponent } from './pages/edit-elephant/edit-elephant.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { EditElephantComponent } from './pages/edit-elephant/edit-elephant.compo
     LoginComponent,
     ElephantComponent,
     HeaderComponent,
-    EditElephantComponent,
   ],
   imports: [
     BrowserModule,
