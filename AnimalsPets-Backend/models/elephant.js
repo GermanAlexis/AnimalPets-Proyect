@@ -23,19 +23,29 @@ affiliation: {
     required: true,
     default: 'Unavailable',
   },
-fictional:{type: String,
-  default: 'Unavailable'},
-dob:{type: String,
-  default: 'Unavailable'},
-dod:{type: String,
-  default: 'Unavailable'},
-index:{type: String,
-  default: 'Unavailable',
-  unique: true},
-wikilink: {type: String,
-  default: 'Unavailable'},
-note:{type: String,
-  default: 'Unavailable'}
+fictional: {
+          type: String,
+          default: 'Unavailable'
+},
+dob: { 
+    type: String,
+    default: 'Unavailable'
+},
+dod: {
+  type: String,
+  default: 'Unavailable'
+},
+index: { 
+  type: String
+},
+wikilink: {
+  type: String,
+  default: 'Unavailable'
+},
+note: {
+  type: String,
+  default: 'Unavailable'
+}
 });
 
 elephantSchema.method('toJSON', function () {

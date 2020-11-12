@@ -4,7 +4,7 @@ const allElephants = async ( req, res ) => {
 
     try {
         const [ elephants, total ] = await Promise.all ([
-            Elephant.find({},'name image sex species affiliation' ),
+            Elephant.find({}),
             Elephant.countDocuments(),
         ])
 
@@ -25,6 +25,7 @@ const allElephants = async ( req, res ) => {
 }
 
 const createElephant = async ( req, res ) => {
+
     
     try {
 
@@ -40,7 +41,8 @@ const createElephant = async ( req, res ) => {
         console.log(error);
         res.status(500).json({
           ok: false,
-          msg: 'Error inesperado ... ',
+          msg: 'Error!! Ya existe Nombre con ese index',
+          error:error
         });
     }
 } 
@@ -55,7 +57,14 @@ const updateElephant = async ( req, res ) => {
                 msg: `El Elefante no Existe`
             })
         }
-        
+        const existElephant = await Elephant.find( { index: req.body.index } );
+        if (existElephant){
+            return res.status(401).json({
+                ok: false,
+                msg: `un Elefante ya tiene este index Existente`
+            })
+        }
+
         const elephantUpdate = await Elephant.findOneAndUpdate(uid, req.body, { new: true });
 
         res.status(200).json({
